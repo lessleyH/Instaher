@@ -1,4 +1,7 @@
 <resources>
-    <string name="app_name">InstaHer</string>
-    <string name="title_activity_home">HomeActivity</string>
+    <string name="app_name" translatable="false">InstaHer</string>
+    <string name="title_activity_home" translatable="false">HomeActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="frag_home" translatable="false">frag_home</string>
 </resources>
