@@ -65,8 +65,14 @@ public class HomeActivity extends AppCompatActivity {
     }
 private void createPost(String description, ParseFile imageFile, ParseUser user){
         //TODO: create and save post
-}
 
+    final Post newPost = new Post();
+    newPost.setDescription(description);
+    newPost.setImage(imageFile);
+    newPost.setUser(user);
+
+
+}
 
 
 private void loadTopPosts() {
