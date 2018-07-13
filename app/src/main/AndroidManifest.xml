@@ -42,7 +42,8 @@
                 android:resource="@xml/fileprovider" />
         </provider>
 
-        <activity android:name=".FeedActivity"></activity>
+        <activity android:name=".FeedActivity" />
+        <activity android:name=".SignUpActivity"></activity>
     </application>
 
 </manifest> <!-- TODO: vid. 3 time 7:28 -->

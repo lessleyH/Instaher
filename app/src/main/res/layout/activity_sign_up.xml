@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignUpActivity">
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:background="@drawable/insta_background"
+        android:layout_height="match_parent">
+
+
+        <Button
+            android:id="@+id/done_btn"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="308dp"
+            android:layout_height="57dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:text="Submit"
+            tools:layout_editor_absoluteX="38dp"
+            tools:layout_editor_absoluteY="356dp" />
+
+        <EditText
+            android:id="@+id/etPasswordS"
+            android:layout_width="258dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="190dp"
+            android:background="@android:drawable/editbox_background_normal"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword"
+            tools:layout_editor_absoluteX="63dp"
+            tools:layout_editor_absoluteY="274dp" />
+
+        <EditText
+            android:id="@+id/etUsernameS"
+            android:layout_width="255dp"
+            android:layout_height="49dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="179dp"
+            android:background="@android:drawable/editbox_background_normal"
+            android:ems="10"
+            android:hint="Username"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="65dp"
+            tools:layout_editor_absoluteY="192dp" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="314dp"
+            android:layout_height="114dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/nux_dayone_landing_logo"
+            tools:layout_editor_absoluteX="35dp"
+            tools:layout_editor_absoluteY="16dp" />
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
