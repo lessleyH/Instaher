@@ -8,11 +8,9 @@
 
     <ImageButton
         android:id="@+id/btnImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="130dp"
+        android:layout_width="66dp"
+        android:layout_height="59dp"
+        android:layout_centerInParent="true"
         app:srcCompat="@drawable/camera_shadow_fill" />
 
     <ImageView
@@ -23,4 +21,31 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         app:srcCompat="@drawable/ic_launcher_background" />
+
+    <Button
+        android:id="@+id/postBttn"
+        android:layout_width="158dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Post" />
+
+    <EditText
+        android:id="@+id/tvDescriptPost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="122dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Add a Description" />
+
+    <Button
+        android:id="@+id/BtnfeedBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/postBttn"
+        android:layout_centerHorizontal="true"
+        android:text="HomeFeed" />
 </RelativeLayout>

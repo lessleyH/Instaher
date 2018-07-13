@@ -12,9 +12,16 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.kalicalitally.instaher.model.Post;
+import com.parse.ParseException;
+import com.parse.ParseFile;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import java.io.File;
 
@@ -29,6 +36,11 @@ public class CameraActivity extends AppCompatActivity {
 
     private ImageButton camPic;
 
+    private Button postBtn;
+
+    private Button feedBtn;
+    EditText descript;
+
     //init btn and image view
 
 
@@ -38,7 +50,21 @@ public class CameraActivity extends AppCompatActivity {
         setContentView(R.layout.activity_camera);
         //onClick
 
+        postBtn = (Button) findViewById(R.id.postBttn);
+        descript = (EditText) findViewById(R.id.tvDescriptPost);
         camPic = (ImageButton) findViewById(R.id.btnImage);
+        feedBtn = (Button) findViewById(R.id.BtnfeedBtn);
+
+        feedBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(CameraActivity.this, FeedActivity.class);
+                startActivity(i);
+
+            }
+        });
+
+
         camPic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,6 +93,25 @@ public class CameraActivity extends AppCompatActivity {
             startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
         }
     }
+    private void createPost(String description, ParseFile imageFile, ParseUser user){
+        //TODO: create and save post
+
+        final Post newPost = new Post();
+        newPost.setDescription(description);
+        newPost.setImage(imageFile);
+        newPost.setUser(user);
+
+        newPost.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e == null) {
+                    Log.d("HomeActivity", "Create Post called and done :)!!");
+                } else {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
     // Returns the File for a photo stored on disk given the fileName
     public File getPhotoFileUri(String fileName) {
         // Get safe storage directory for photos
@@ -93,7 +138,18 @@ public class CameraActivity extends AppCompatActivity {
                 // RESIZE BITMAP, see section below
                 // Load the taken image into a preview
                 ImageView ivPreview = (ImageView) findViewById(R.id.ivPicture);
+
                 ivPreview.setImageBitmap(takenImage);
+
+                postBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        final File file = getPhotoFileUri(photoFileName);
+                        final ParseFile pFile = new ParseFile(file);
+                        createPost(descript.getText().toString(), pFile, ParseUser.getCurrentUser());
+
+                    }
+                });
             } else { // Result was a failure
                 Toast.makeText(this, "Picture wasn't taken!", Toast.LENGTH_SHORT).show();
             }
