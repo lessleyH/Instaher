@@ -8,18 +8,18 @@
 
     <ImageButton
         android:id="@+id/btnImage"
-        android:layout_width="66dp"
-        android:layout_height="59dp"
+        android:layout_width="186dp"
+        android:layout_height="82dp"
         android:layout_centerInParent="true"
         app:srcCompat="@drawable/camera_shadow_fill" />
 
     <ImageView
         android:id="@+id/ivPicture"
-        android:layout_width="232dp"
-        android:layout_height="151dp"
+        android:layout_width="match_parent"
+        android:layout_height="201dp"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         app:srcCompat="@drawable/ic_launcher_background" />
 
     <Button
@@ -36,16 +36,17 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="122dp"
+        android:layout_marginBottom="155dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Add a Description" />
+        android:hint="Add a Description"
+        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/BtnfeedBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/postBttn"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="88dp"
         android:text="HomeFeed" />
 </RelativeLayout>

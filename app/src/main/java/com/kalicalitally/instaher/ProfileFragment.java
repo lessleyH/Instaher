@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kalicalitally.instaher.model.Post;
@@ -43,6 +44,7 @@ public class ProfileFragment extends Fragment {
 
     private Button SignOutBtn;
     ImageView profileImg;
+    TextView currUsername;
 
     static final int REQUEST_IMAGE_CAPTURE =1;
 
@@ -51,10 +53,6 @@ public class ProfileFragment extends Fragment {
     public final static int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 1034;
     public String photoFileName = "photo.jpg";
     File photoFile;
-
-    private ImageButton camPic;
-    ImageView ivPreview;
-    private Button postBtn;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -67,11 +65,18 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        profileImg = view.findViewById(R.id.ivProfileImages);
         SignOutBtn = view.findViewById(R.id.logOut_btn);
+        currUsername = view.findViewById(R.id.tvUserProfilename);
+        currUsername.setText(ParseUser.getCurrentUser().getUsername());
+
         SignOutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ParseUser.logOut();
+                final Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
             }
         });
 

@@ -31,8 +31,6 @@ import com.parse.SaveCallback;
 import java.io.File;
 
 import static android.app.Activity.RESULT_OK;
-
-
 /**
  */
 public class CameraFragment extends Fragment {

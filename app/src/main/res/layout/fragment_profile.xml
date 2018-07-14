@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    tools:context=".ProfileFragment">
+    tools:context=".ProfileFragment"
+    android:theme="@style/AppTheme.NoActionBar">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -21,13 +22,13 @@
             android:text="LogOut" />
 
         <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/ivProfileImages"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="11dp"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="39dp"
             android:src="@drawable/instagram_user_outline_24" />
 
         <TextView
@@ -35,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_alignStart="@+id/imageView2"
+            android:layout_alignStart="@+id/ivProfileImages"
             android:layout_marginTop="96dp"
             android:text="username"
             android:textStyle="bold" />
@@ -44,7 +45,7 @@
             android:id="@+id/tvBio"
             android:layout_width="362dp"
             android:layout_height="49dp"
-            android:layout_alignStart="@+id/imageView2"
+            android:layout_alignStart="@+id/ivProfileImages"
             android:layout_below="@+id/tvUserProfilename"
             android:hint="Add a Bio!" />
 
