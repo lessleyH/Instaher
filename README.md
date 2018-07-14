@@ -47,7 +47,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://github.com/lessleyH/Instaher/blob/Hewwo/walkthrough_insta.mov' width='' alt='Video Walkthrough' />
+<img src='https://media.giphy.com/media/yNt5wkQy5zN1k7wlfI/giphy.gif' width='' alt='Video Walkthrough' />
 - if gif doesn't show  
 
 ## Credits
