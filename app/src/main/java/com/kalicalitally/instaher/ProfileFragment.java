@@ -7,9 +7,11 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.FileProvider;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,6 +42,7 @@ import static android.app.Activity.RESULT_OK;
 public class ProfileFragment extends Fragment {
 
     private Button SignOutBtn;
+    ImageView profileImg;
 
     static final int REQUEST_IMAGE_CAPTURE =1;
 
@@ -71,8 +74,33 @@ public class ProfileFragment extends Fragment {
                 ParseUser.logOut();
             }
         });
-    }
 
+        profileImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onLaunchCamera();
+            }
+        });
+    }
+    public void onLaunchCamera() {
+        // create Intent to take a picture and return control to the calling application
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        // Create a File reference to access to future access
+        photoFile = getPhotoFileUri(photoFileName);
+
+        // wrap File object into a content provider
+        // required for API >= 24
+        // See https://guides.codepath.com/android/Sharing-Content-with-Intents#sharing-files-with-api-24-or-higher
+        Uri fileProvider = FileProvider.getUriForFile(getActivity(), "com.kalicalitally.instaher", photoFile);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider);
+
+        // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
+        // So as long as the result is not null, it's safe to use the intent.
+        if (intent.resolveActivity(ProfileFragment.this.getActivity().getPackageManager()) != null) {
+            // Start the image capture intent to take photo
+            startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
     // Returns the File for a photo stored on disk given the fileName
     public File getPhotoFileUri(String fileName) {
         // Get safe storage directory for photos
@@ -99,16 +127,9 @@ public class ProfileFragment extends Fragment {
                 // RESIZE BITMAP, see section below
                 // Load the taken image into a preview
 
-                ivPreview.setImageBitmap(takenImage);
-
-                postBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        final File file = getPhotoFileUri(photoFileName);
-                        final ParseFile pFile = new ParseFile(file);
-
-                    }
-                });
+                profileImg.setImageBitmap(takenImage);
+                ParseUser.getCurrentUser().put("profile", new ParseFile(photoFile));
+                ParseUser.getCurrentUser().saveInBackground();
             } else { // Result was a failure
                 Toast.makeText(getActivity(), "Picture wasn't taken!", Toast.LENGTH_SHORT).show();
             }
